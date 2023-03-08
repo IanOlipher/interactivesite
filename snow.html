@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/addons/p5.sound.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8" />
+  <p>press j or k to change background color. Arrow up or Down for music, left for bell rings. And mouse press to print snowflakes!</p>
+  <p>Warning! please lower the sound or volume of your device to protect your ears!</p>
+<script>
+ 
+
+let music;
+let ringbell;
+let snowFlakes;
+let C1 =250 ;
+let C2 =107;
+let C3 =102;
+let x;
+let y;
+let n=1;
+
+function preload() {
+  music = loadSound("sounds/SoundtrackA.MP3");//bgm for All I want for Christmas is you by Mariah Carey
+  ringbell = loadSound("sounds/RingbellXmas.MP3"); //ring bell sound if click
+  snowFlakes = loadImage("images/snowflakes.png");//load image
+}
+
+
+function setup(){
+  createCanvas(800, 800);
+  background(C1, C2, C3);
+  
+
+  keyPressed();
+  
+
+  mousePressed();
+
+}
+
+function draw(){
+angleMode(DEGREES);
+textSize(36);
+text("Merry Christmas My Love!", 200 , 50); //print text for xmas
+
+
+
+
+}
+
+
+
+
+function keyPressed(){
+
+  //ket J
+  if (keyCode === 74){
+  //background color change n 250, 107, 102
+  C1 = 250;
+  C2 = 107;
+  C3 = 102;
+  background(C1,C2,C3);
+  textSize(36);
+  text("Merry Christmas My Love!", 200 , 50);
+
+}
+
+//key K
+if(keyCode === 75) {
+ 
+  C1 = 184;
+  C2 = 204;
+  C3 = 214;
+  background(C1,C2,C3);
+  
+  text("Merry Christmas My Love!", 200 , 50);
+  textSize(36);
+
+}
+//keycode up arrow
+if(keyCode === 38) {
+music.play();
+}
+
+//keycode down arrow
+if(keyCode === 40) {
+music.stop();
+}
+
+//if(keyCode === 37){
+ // ringbell.play();//ringbell play by clicking
+//}
+}
+
+
+function mousePressed(){
+
+  x=random(10,30);  y=x;
+  ringbell.play();//ringbell play by clicking
+
+
+  //snowflakes drawing
+    if (mouseIsPressed == true){ 
+      image(snowFlakes, mouseX, mouseY, x, y);
+    image(snowFlakes, mouseX+random(30,60), mouseY+random(-30,30), x, y);
+    image(snowFlakes, mouseX+random(-60,-30), mouseY+random(-30,30), x, y);
+    image(snowFlakes, mouseX+random(30,60), mouseY+random(-30,30), x, y);
+    image(snowFlakes, mouseX+random(-60,-30), mouseY+random(-30,30), x, y);
+
+    }
+}
+
+
+</script>
+
+</head>
+
+<body>
+  <main>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+  </main>
+ 
+</body>
+
+</html>
